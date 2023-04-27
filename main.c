@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <time.h>
 
 #define MAX 10
 
@@ -16,6 +16,9 @@ typedef struct {
 
 void spawnFood(int screen[MAX][MAX]){
     //check until a free spot is found
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    srand(tm.tm_sec);
     int x, y;
     do{
         x = rand() % MAX;
