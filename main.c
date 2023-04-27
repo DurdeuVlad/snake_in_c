@@ -73,6 +73,7 @@ int Draw(int screen[MAX][MAX], Snake* snake){
     // change the current position to 2
     if(screen[current_pos.x][current_pos.y] == 5){
         eatFood(snake);
+        eatFood(snake);
         spawnFood(screen);
     }
     if(screen[current_pos.x][current_pos.y] == 1 || screen[current_pos.x][current_pos.y] == 2){
@@ -94,7 +95,7 @@ int Draw(int screen[MAX][MAX], Snake* snake){
         }
         printf("\n");
     }
-    printf("Score: %d\n", snake->length-1);
+    printf("Score: %d\n", (snake->length-1)/2);
 
     for(int i=0; i<snake->length; i++)
         screen[snake->body[i].x][snake->body[i].y] = 0;
