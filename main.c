@@ -64,7 +64,7 @@ void eatFood(Snake* snake){
     snake->body[snake->length-1] = new_pos;
 }
 
-int Draw(int screen[MAX][MAX], Snake* snake){
+int Draw(int screen[MAX][MAX], Snake* snake, int level){
     // delete console
     printf("\n");
     printf("\n");
@@ -92,13 +92,18 @@ int Draw(int screen[MAX][MAX], Snake* snake){
     }
 
     // show screen
+    int isFood = 0;
     for(int i=0; i<MAX; i++){
         for(int j=0; j<MAX; j++){
             printf("%d ", screen[i][j]);
+            if(screen[i][j] == 5)
+                isFood = 1;
         }
         printf("\n");
     }
-    printf("Score: %d\n", (snake->length-1)/2);
+    printf("Score: %d/%d\n", (snake->length-1)/2, (MAX+level*2));
+    if(!isFood)
+        spawnFood(screen);
 
     for(int i=0; i<snake->length; i++)
         screen[snake->body[i].x][snake->body[i].y] = 0;
@@ -142,28 +147,49 @@ int Draw(int screen[MAX][MAX], Snake* snake){
     return 0;
 }
 
-
-int main() {
-    int screen[MAX][MAX];
-    for(int i = 0; i < MAX; i++)
-        for(int j = 0; j < MAX; j++)
-            screen[i][j] = 0;
+void restart(Snake *snake, int screen[MAX][MAX], int level){
+    // reset snake
+    // reset screen
+    // reset food
+    char levels[]= {"nivela.txt ", };
     Point current_pos = {MAX/2-1, MAX/2-1};
-    Snake snake;
-    snake.body = malloc(sizeof(Point));
-    snake.body[0]=current_pos;
-    snake.length=1;
-    snake.direction = 's';
+
+    snake->body = malloc(sizeof(Point));
+    snake->body[0]=current_pos;
+    snake->length=1;
+    snake->direction = 's';
 
     // read screen from file
-    FILE* fp = fopen("screen.txt", "r");
+    levels[5] = level + '0';
+    printf("Loading level %d from %s\n", level, levels);
+    FILE* fp = fopen(levels, "r");
     for(int i = 0; i < MAX; i++)
         for(int j = 0; j < MAX; j++)
             fscanf(fp, "%d", &screen[i][j]);
     fclose(fp);
     spawnFood(screen);
+}
+
+
+int main() {
+    int level = 0;
+    int screen[MAX][MAX];
+    Snake snake;
+    for(int i = 0; i < MAX; i++)
+        for(int j = 0; j < MAX; j++)
+            screen[i][j] = 0;
+    restart(&snake, screen, level);
     while(1){
-        if(Draw(screen, &snake))
+        if(snake.length >= (MAX+level*2)*2){
+            level++;
+            if(level == 5){
+                printf("You won!\n");
+                break;
+            }
+            printf("Level %d\n", level);
+            restart(&snake, screen, level);
+        }
+        if(Draw(screen, &snake, level))
             break;
     }
 
