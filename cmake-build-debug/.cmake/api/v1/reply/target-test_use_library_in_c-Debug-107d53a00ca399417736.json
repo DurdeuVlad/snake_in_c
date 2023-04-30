@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "snake_in_c.exe"
+			"path" : "test_use_library_in_c.exe"
 		},
 		{
-			"path" : "snake_in_c.pdb"
+			"path" : "test_use_library_in_c.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -13,9 +13,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"target_link_libraries",
-			"include_directories"
+			"add_executable"
 		],
 		"files" : 
 		[
@@ -29,19 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 17,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 13,
+				"line" : 6,
 				"parent" : 0
 			}
 		]
@@ -58,13 +44,6 @@
 					"fragment" : "-std=gnu11"
 				}
 			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 3,
-					"path" : "C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/include"
-				}
-			],
 			"language" : "C",
 			"languageStandard" : 
 			{
@@ -76,11 +55,12 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
-	"id" : "snake_in_c::@6890427a1f51a3e7e1df",
+	"id" : "test_use_library_in_c::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -94,19 +74,14 @@
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 2,
-				"fragment" : "C:\\Users\\Vlad\\Desktop\\lucrari\\PLA\\snake_in_c\\lib\\canvas.lib",
-				"role" : "libraries"
-			},
-			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
 		"language" : "C"
 	},
-	"name" : "snake_in_c",
-	"nameOnDisk" : "snake_in_c.exe",
+	"name" : "test_use_library_in_c",
+	"nameOnDisk" : "test_use_library_in_c.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -118,7 +93,8 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -128,6 +104,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "snake_methods.c",
 			"sourceGroupIndex" : 0
 		}
 	],

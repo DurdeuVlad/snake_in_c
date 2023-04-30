@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.24"
+						"string" : "3.20"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "snake_in_c",
+					"name" : "test_use_library_in_c",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "snake_in_c::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-snake_in_c-Debug-7b52753f57c171835eb4.json",
-					"name" : "snake_in_c",
+					"id" : "test_use_library_in_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_use_library_in_c-Debug-107d53a00ca399417736.json",
+					"name" : "test_use_library_in_c",
 					"projectIndex" : 0
 				}
 			]

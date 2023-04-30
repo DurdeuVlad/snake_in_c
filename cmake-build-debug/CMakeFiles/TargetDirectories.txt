@@ -1,3 +1,3 @@
-C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/cmake-build-debug/CMakeFiles/snake_in_c.dir
+C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/cmake-build-debug/CMakeFiles/test_use_library_in_c.dir
 C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
