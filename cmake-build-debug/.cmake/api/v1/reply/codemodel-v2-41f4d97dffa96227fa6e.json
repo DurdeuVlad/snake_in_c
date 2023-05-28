@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,12 +31,20 @@
 					"name" : "test_use_library_in_c",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 0,
+					"id" : "snake_methods_library::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-snake_methods_library-Debug-417c9685b29d8858b62a.json",
+					"name" : "snake_methods_library",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 0,
 					"id" : "test_use_library_in_c::@6890427a1f51a3e7e1df",

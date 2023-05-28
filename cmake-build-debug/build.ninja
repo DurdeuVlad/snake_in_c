@@ -79,6 +79,37 @@ build test_use_library_in_c.exe: C_EXECUTABLE_LINKER__test_use_library_in_c_Debu
   TARGET_IMPLIB = libtest_use_library_in_c.dll.a
   TARGET_PDB = test_use_library_in_c.exe.dbg
 
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target snake_methods_library
+
+
+#############################################
+# Order-only phony target for snake_methods_library
+
+build cmake_object_order_depends_target_snake_methods_library: phony || CMakeFiles/snake_methods_library.dir
+
+build CMakeFiles/snake_methods_library.dir/snake_methods.c.obj: C_COMPILER__snake_methods_library_Debug C$:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/snake_methods.c || cmake_object_order_depends_target_snake_methods_library
+  DEP_FILE = CMakeFiles\snake_methods_library.dir\snake_methods.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles\snake_methods_library.dir
+  OBJECT_FILE_DIR = CMakeFiles\snake_methods_library.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target snake_methods_library
+
+
+#############################################
+# Link the static library libsnake_methods_library.a
+
+build libsnake_methods_library.a: C_STATIC_LIBRARY_LINKER__snake_methods_library_Debug CMakeFiles/snake_methods_library.dir/snake_methods.c.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\snake_methods_library.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libsnake_methods_library.a
+  TARGET_PDB = snake_methods_library.a.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -105,6 +136,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build snake_methods_library: phony libsnake_methods_library.a
+
 build test_use_library_in_c: phony test_use_library_in_c.exe
 
 # =============================================================================
@@ -115,7 +148,7 @@ build test_use_library_in_c: phony test_use_library_in_c.exe
 #############################################
 # Folder: C:/Users/Vlad/Desktop/lucrari/PLA/snake_in_c/cmake-build-debug
 
-build all: phony test_use_library_in_c.exe
+build all: phony test_use_library_in_c.exe libsnake_methods_library.a
 
 # =============================================================================
 # Built-in targets

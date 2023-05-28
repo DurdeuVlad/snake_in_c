@@ -17,6 +17,7 @@ typedef struct {
     int length;
     char direction;
 }Snake;
+void readLevel(int screen[MAX][MAX], char level[]);
 void spawnFood(int screen[MAX][MAX]);
 void moveSnake(Snake* snake, Point new_pos);
 void eatFood(Snake* snake);

@@ -9,15 +9,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-int comparePoints(Point p1, Point p2){
+// written
+__declspec(dllexport) int __stdcall comparePoints(Point p1, Point p2){
     if(p1.x == p2.x && p1.y == p2.y)
         return 1;
     return 0;
 }
 
-
-Point modifyCurrentPosition(Point current_pos, char direction){
+// written
+__declspec(dllexport) Point __stdcall modifyCurrentPosition(Point current_pos, char direction){
     switch (direction) {
         case 'd':
             if(current_pos.y < MAX-1)
@@ -51,7 +51,8 @@ Point modifyCurrentPosition(Point current_pos, char direction){
     return current_pos;
 }
 
-void spawnFood(int screen[MAX][MAX]){
+// written
+__declspec(dllexport) void __stdcall spawnFood(int screen[MAX][MAX]){
     //check until a free spot is found
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
@@ -66,7 +67,8 @@ void spawnFood(int screen[MAX][MAX]){
     }while(screen[x][y] != 5);
 }
 
-int checkIfFoodExistsAndSpawn(int screen[MAX][MAX]){
+// written
+__declspec(dllexport) int __stdcall  checkIfFoodExistsAndSpawn(int screen[MAX][MAX]){
     for(int i=0; i<MAX; i++)
         for(int j=0; j<MAX; j++)
             if(screen[i][j] == 5)
@@ -75,14 +77,16 @@ int checkIfFoodExistsAndSpawn(int screen[MAX][MAX]){
     return 0;
 }
 
-void moveSnake(Snake* snake, Point new_pos){
+// written
+__declspec(dllexport) void __stdcall  moveSnake(Snake* snake, Point new_pos){
     for(int i=snake->length-1; i>0; i--){
         snake->body[i] = snake->body[i-1];
     }
     snake->body[0] = new_pos;
 }
 
-void eatFood(Snake* snake){
+// written
+__declspec(dllexport) void __stdcall  eatFood(Snake* snake){
     // will add the new position at the back of the snake, opposite of the direction it is currently going
 //    if(snake->length == MAX*2-1)
 //        return;
@@ -111,14 +115,25 @@ void eatFood(Snake* snake){
 }
 
 
-void restart(Snake *snake, int screen[MAX][MAX], int level){
+
+//not written
+void readLevel(int screen[MAX][MAX], char level[]){
+    FILE* fp = fopen(level, "r");
+    for(int i = 0; i < MAX; i++)
+        for(int j = 0; j < MAX; j++)
+            fscanf(fp, "%d", &screen[i][j]);
+    fclose(fp);
+}
+
+// written
+__declspec(dllexport) void __stdcall  restart(Snake *snake, int screen[MAX][MAX], int level){
     // reset snake
     // reset screen
     // reset food
     for(int i = 0; i < MAX; i++)
         for(int j = 0; j < MAX; j++)
             screen[i][j] = 0;
-    char levels[]= {"nivela.txt ", };
+    char levels[]= {"nivela.txt ",};
     Point current_pos = {MAX/2-1, MAX/2-1};
 
     snake->body = malloc(sizeof(Point));
@@ -129,17 +144,13 @@ void restart(Snake *snake, int screen[MAX][MAX], int level){
     // read screen from file
     levels[5] = level + '0';
     printf("Loading level %d from %s\n", level, levels);
-    FILE* fp = fopen(levels, "r");
-    for(int i = 0; i < MAX; i++)
-        for(int j = 0; j < MAX; j++)
-            fscanf(fp, "%d", &screen[i][j]);
-    fclose(fp);
+    readLevel(screen, levels);
     spawnFood(screen);
 }
 
 
-
-int reactToScreenPositionAndDrawSnake(int screen[MAX][MAX], Snake* snake){
+// written
+__declspec(dllexport) int __stdcall  reactToScreenPositionAndDrawSnake(int screen[MAX][MAX], Snake* snake){
     Point current_pos = snake->body[0];
     // change the current position to 2
     if(screen[current_pos.x][current_pos.y] == 5){
@@ -172,20 +183,20 @@ int reactToScreenPositionAndDrawSnake(int screen[MAX][MAX], Snake* snake){
     }
     return 0;
 }
-
-void clearScreenOfSnake(int screen[MAX][MAX], Snake* snake){
+// written
+__declspec(dllexport) void __stdcall  clearScreenOfSnake(int screen[MAX][MAX], Snake* snake){
     for(int i=0; i<snake->length; i++){
         screen[snake->body[i].x][snake->body[i].y] = 0;
     }
 }
-Point returnScore(Snake snake, int level){
+__declspec(dllexport) Point __stdcall  returnScore(Snake snake, int level){
     Point score;
     score.x = (snake.length-1)/2;
     score.y = (MAX+level*2);
     return score;
 }
 
-void showDebugScreen(int screen[MAX][MAX], Snake* snake, int level){
+__declspec(dllexport) void __stdcall showDebugScreen(int screen[MAX][MAX], Snake* snake, int level){
     for(int i=0; i<MAX; i++){
         for(int j=0; j<MAX; j++){
             printf("%d ", screen[i][j]);
@@ -195,7 +206,7 @@ void showDebugScreen(int screen[MAX][MAX], Snake* snake, int level){
     printf("Score: %d/%d\n", returnScore(*snake, level).x, returnScore(*snake, level).y);
 }
 
-int levelUp(int screen[MAX][MAX], Snake* snake, int level){
+__declspec(dllexport) int __stdcall levelUp(int screen[MAX][MAX], Snake* snake, int level){
     if(returnScore(*snake, level).x >= (returnScore(*snake, level).y)){
         level++;
         if(level == 5){

@@ -1,0 +1,100 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libsnake_methods_library.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				},
+				{
+					"fragment" : "-std=gnu11"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"id" : "snake_methods_library::@6890427a1f51a3e7e1df",
+	"name" : "snake_methods_library",
+	"nameOnDisk" : "libsnake_methods_library.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "snake_methods.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "snake_methods.c",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
